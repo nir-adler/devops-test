@@ -6,8 +6,8 @@ agent none
     stage('Docker Build') {
     	agent any
       steps {
-      	sh 'docker build -t python-test .'
-        sh 'docker run python-test >/dev/fd/0'
+      	sh 'docker build -f Dockerfile-run-python -t python-exec .'
+        sh 'docker run python-exec >/dev/fd/0'
       }
     }
   }

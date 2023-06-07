@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+  jenkins:
+    hostname: jenkins
+    container_name: jenkins
+    image: developerengage/nir-devops-test-platform-linux-arm64:1.0.0
+    deploy:
+      restart_policy:
+        condition: on-failure
+    env_file:
+      - ./jenkins.env
+    networks:
+      - jenkins
+    ports:
+      - 8080:8080
+      - 50000:50000
+      - 2376:2376
+    environment:
+      - DOCKER_HOST: tcp://host.docker.internal:2376
+networks:
+  jenkins:
