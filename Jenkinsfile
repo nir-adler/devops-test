@@ -1,21 +1,14 @@
-pipeline {
-    agent any
+#!groovy
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+pipeline {
+agent none
+  stages {
+    stage('Docker Build') {
+    	agent any
+      steps {
+      	sh 'docker build -t python-test .'
+        sh 'docker run python-test'
+      }
     }
+  }
 }
