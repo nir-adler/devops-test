@@ -7,7 +7,7 @@ agent none
     	agent any
       steps {
       	sh 'docker build -t python-test .'
-        sh(returnStdout: true, script: 'docker run python-test')
+        sh 'docker run python-test >/dev/fd/0'
       }
     }
   }
