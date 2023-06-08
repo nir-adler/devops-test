@@ -1,0 +1,7 @@
+FROM developerengage/nir-devops-test-platform-linux-arm64:1.0.0
+USER root
+RUN apt update -y
+RUN curl -o /gh.deb -L https://github.com/cli/cli/releases/download/v2.30.0/gh_2.30.0_linux_arm64.deb
+RUN dpkg -i /gh.deb 
+RUN apt-get install -f -y
+USER jenkins

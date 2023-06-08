@@ -1,0 +1,7 @@
+FROM jenkins:1.0.15
+USER jenkins
+RUN mkdir -p /var/jenkins_home/.config/gh
+COPY ./files/hosts.yml  /var/jenkins_home/.config/gh/hosts.yml
+USER root
+RUN chown  jenkins:jenkins /var/jenkins_home/.config/gh/hosts.yml
+USER jenkins
