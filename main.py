@@ -1,2 +1,1 @@
-
-print('DevOps is great, test')
+print('DevOps is great')
