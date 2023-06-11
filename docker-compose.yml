@@ -4,7 +4,7 @@ services:
   jenkins:
     hostname: jenkins
     container_name: jenkins
-    image: jenkins:1.0.25  
+    image: developerengage/nir-devops-test-platform-linux-arm64:1.0.1
     deploy:
       restart_policy:
         condition: on-failure
