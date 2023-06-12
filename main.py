@@ -1,1 +1,1 @@
-print('DevOps is great, 500')
+print('DevOps is great, 600')
