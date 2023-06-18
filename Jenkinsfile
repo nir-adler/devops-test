@@ -9,7 +9,7 @@ agent none
       	sh 'docker build -f Dockerfile-run-python -t python-exec .'
         script {
           GIT_COMMIT_EMAIL = sh (
-                script: 'docker run python-exec',
+                script: 'docker run -it python-exec',
                 returnStdout: true
             ).trim()
             echo "Git committer email: ${GIT_COMMIT_EMAIL}"
