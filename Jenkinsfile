@@ -7,11 +7,13 @@ agent none
     	agent any
       steps {
       	sh 'docker build -f Dockerfile-run-python -t python-exec .'
-        BUILD_FULL = sh (
-          script: "docker run python-exec",
-          returnStatus: true
-        ) == 0
-        echo "Build full flag: ${BUILD_FULL}"
+        script {
+          GIT_COMMIT_EMAIL = sh (
+                script: 'docker run python-exec',
+                returnStdout: true
+            ).trim()
+            echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+        }
       }
     }
   }
