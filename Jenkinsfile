@@ -7,7 +7,11 @@ agent none
     	agent any
       steps {
       	sh 'docker build -f Dockerfile-run-python -t python-exec .'
-        sh 'docker run python-exec >/dev/fd/0'
+        BUILD_FULL = sh (
+          script: "docker run python-exec",
+          returnStatus: true
+        ) == 0
+        echo "Build full flag: ${BUILD_FULL}"
       }
     }
   }
